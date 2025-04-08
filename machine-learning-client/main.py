@@ -115,5 +115,6 @@ def main():
     except Exception as e:  # pylint: disable=broad-except
         print(f"An error occurred: {str(e)}")
 
+
 if __name__ == "__main__":
     main()
