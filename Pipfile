@@ -5,11 +5,15 @@ name = "pypi"
 
 [packages]
 scipy = "*"
-transformers = "*"
 sqlalchemy = "*"
 sounddevice = "*"
+numpy = "*"
+transformers = "*"
+speechrecognition = "*"
+soundfile = "*"
 
 [dev-packages]
+pylint = "*"
 
 [requires]
 python_version = "3.13"
