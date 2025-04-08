@@ -5,6 +5,13 @@ name = "pypi"
 
 [packages]
 pymongo = "*"
+scipy = "*"
+sqlalchemy = "*"
+sounddevice = "*"
+numpy = "*"
+transformers = "*"
+speechrecognition = "*"
+soundfile = "*"
 
 [dev-packages]
 pylint = "*"
