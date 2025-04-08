@@ -1,0 +1,50 @@
+version: '3.9'
+
+services:
+  mongodb:
+    image: mongo
+    container_name: mongodb
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo_data:/data/db
+    networks:
+      - moodnet
+
+  ml-client:
+    build:
+      context: ./machine-learning-client
+      dockerfile: Dockerfile
+    container_name: ml-client
+    depends_on:
+      - mongodb
+    networks:
+      - moodnet
+    environment:
+      - MONGO_URI=mongodb://mongodb:27017
+      - SAMPLE_RATE=22050
+      - CHUNK_DURATION=5
+    volumes:
+      - ./machine-learning-client:/app
+
+  web-app:
+    build:
+      context: ./web-app
+    container_name: web-app
+    ports:
+      - "5000:5000"
+    depends_on:
+      - mongodb
+    networks:
+      - moodnet
+    environment:
+      - MONGO_URI=mongodb://mongodb:27017
+    volumes:
+      - ./web-app:/app
+
+volumes:
+  mongo_data:
+
+networks:
+  moodnet:
+    driver: bridge
