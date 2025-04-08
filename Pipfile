@@ -10,7 +10,7 @@ sqlalchemy = "*"
 sounddevice = "*"
 numpy = "*"
 transformers = "*"
-speechrecognition = "*"
+speech_recognition = "*"
 soundfile = "*"
 
 [dev-packages]

@@ -25,9 +25,11 @@ jobs:
               if: ${{ hashFiles(format('{0}/**/*.py', matrix.subdir)) != '' }}
               # you may set pylint to ignore any files or dependencies that make no sense to lint
               run: |
-                  pipenv run pylint ${{ matrix.subdir }}/**/*.py
+                  cd ${{ matrix.subdir }}
+                  pipenv run pylint **/*.py
             - name: Format with black
               if: ${{ hashFiles(format('{0}/**/*.py', matrix.subdir)) != '' }}
               # you may set black to ignore any files or dependencies that make no sense to format
               run: |
-                  pipenv run black --diff --check ${{ matrix.subdir }}
+                  cd ${{ matrix.subdir }}
+                  pipenv run black --diff --check .
