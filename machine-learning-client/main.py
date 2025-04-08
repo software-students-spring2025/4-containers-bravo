@@ -1,10 +1,8 @@
 import sounddevice as sd
 import numpy as np
-import torch
 from transformers import pipeline
 import time
 import os
-from datetime import datetime
 import speech_recognition as sr
 import soundfile as sf
 
@@ -68,22 +66,22 @@ def speech_to_text(audio_file):
 
 def main():
     print("ML client container started. Ready to record and analyze emotions.")
-    
+
     try:
         while True:
             recording = record_audio()
             audio_file = save_audio(recording)
-            
+       
             # convert speech to text
             text = speech_to_text(audio_file)
-            
+        
             # analyze emotion from text
             emotion = analyze_emotion(text)
             print(f"Detected emotion: {emotion}")
-            
+         
             # clean up temporary file
             os.remove(audio_file)
-            
+
     except KeyboardInterrupt:
         print("\nStopping emotion analysis...")
     except Exception as e:
@@ -91,4 +89,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-
