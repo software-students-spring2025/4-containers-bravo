@@ -4,6 +4,7 @@ verify_ssl = true
 name = "pypi"
 
 [packages]
+pymongo = "*"
 scipy = "*"
 sqlalchemy = "*"
 sounddevice = "*"
@@ -16,4 +17,4 @@ soundfile = "*"
 pylint = "*"
 
 [requires]
-python_version = "3.13"
+python_version = "3.10"
