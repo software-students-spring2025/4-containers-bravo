@@ -22,25 +22,26 @@ RECORD_SECONDS = 5
 recognizer = sr.Recognizer()
 # emotion analysis pipeline
 emotion_analyzer = pipeline(
-    "text-classification",
-    model="finiteautomata/bertweet-base-emotion-analysis"
+    "text-classification", model="finiteautomata/bertweet-base-emotion-analysis"
 )
+
 
 def analyze_emotion(text):
     """Analyze emotion from given text using a pre-trained model.
-    
+
     Args:
         text (str): Input text to analyze
-        
+
     Returns:
         str: Detected emotion label
     """
     result = emotion_analyzer(text)
-    return result[0]['label']
+    return result[0]["label"]
+
 
 def record_audio():
     """Record audio from the default input device.
-    
+
     Returns:
         numpy.ndarray: Recorded audio data
     """
@@ -48,17 +49,18 @@ def record_audio():
         int(RECORD_SECONDS * SAMPLE_RATE),
         samplerate=SAMPLE_RATE,
         channels=CHANNELS,
-        dtype='float32'
+        dtype="float32",
     )
     sd.wait()
     return recording
 
+
 def save_audio(recording):
     """Save recorded audio to a temporary WAV file.
-    
+
     Args:
         recording (numpy.ndarray): Audio data to save
-        
+
     Returns:
         str: Path to the saved audio file
     """
@@ -67,12 +69,13 @@ def save_audio(recording):
     sf.write(filename, recording, SAMPLE_RATE)
     return filename
 
+
 def speech_to_text(audio_file):
     """Convert speech from audio file to text using Google's speech recognition.
-    
+
     Args:
         audio_file (str): Path to the audio file
-        
+
     Returns:
         str: Transcribed text or None if recognition fails
     """
@@ -92,6 +95,7 @@ def speech_to_text(audio_file):
         print(f"Error in speech recognition: {str(e)}")
         return None
 
+
 def main():
     """Main function to run the emotion analysis loop."""
     print("ML client container started. Ready to record and analyze emotions.")
@@ -110,6 +114,7 @@ def main():
         print("\nStopping emotion analysis...")
     except Exception as e:  # pylint: disable=broad-except
         print(f"An error occurred: {str(e)}")
+
 
 if __name__ == "__main__":
     main()

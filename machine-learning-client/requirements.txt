@@ -6,3 +6,5 @@ transformers==4.37.2
 torch==2.6.0
 SpeechRecognition==3.10.0
 emoji==0.6.0
+pylint
+black
