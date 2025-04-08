@@ -1,1 +1,6 @@
 pymongo
+sounddevice==0.4.6
+soundfile==0.12.1
+numpy==1.26.4
+transformers==4.37.2
+torch==2.6.0
