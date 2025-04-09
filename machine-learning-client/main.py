@@ -111,7 +111,7 @@ def send_emotion_request(emotion):
             print(f"Successfully sent emotion: {emotion}")
         else:
             print(f"Failed to send emotion. Status code: {response.status_code}")
-    except Exception as e:
+    except Exception as e:  # pylint: disable=broad-except
         print(f"Error sending emotion to server: {str(e)}")
 
 
