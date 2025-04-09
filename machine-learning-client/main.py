@@ -6,7 +6,7 @@ and analyze emotions from the transcribed text using a pre-trained model.
 
 import os
 import time
-
+import requests
 import numpy as np
 import sounddevice as sd
 import soundfile as sf
@@ -95,6 +95,25 @@ def speech_to_text(audio_file):
         print(f"Error in speech recognition: {str(e)}")
         return None
 
+def send_emotion_request(emotion):
+    """Send emotion to the server.
+
+    Args:
+        emotion (str): Emotion to send
+    """
+    try:
+        response = requests.post(
+            "http://0.0.0.0:5001/api/emotions",
+            json={"emotion": emotion},
+            timeout=5
+        )
+        if response.status_code == 200:
+            print(f"Successfully sent emotion: {emotion}")
+        else:
+            print(f"Failed to send emotion. Status code: {response.status_code}")
+    except Exception as e:
+        print(f"Error sending emotion to server: {str(e)}")
+
 
 def main():
     """Main function to run the emotion analysis loop."""
@@ -108,6 +127,11 @@ def main():
             if text:
                 emotion = analyze_emotion(text)
                 print(f"Detected emotion: {emotion}")
+
+                # send emotion to web app
+                send_emotion_request(emotion)
+
+            # remove audio file
             os.remove(audio_file)
 
     except KeyboardInterrupt:
