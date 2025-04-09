@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Emotion Detection</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Voice Emotion Detection</h1>
+        
+        <div class="controls">
+            <button id="startRecording" class="btn">Start Recording</button>
+            <button id="stopRecording" class="btn" disabled>Stop Recording</button>
+        </div>
+
+        <div class="emotion-display">
+            <h2>Current Emotion:</h2>
+            <div id="currentEmotion" class="emotion-box">
+                Waiting for input...
+            </div>
+        </div>
+
+        <div class="history">
+            <h2>Recent Emotions:</h2>
+            <div id="emotionHistory" class="history-list"></div>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/app.js') }}"></script>
+</body>
+</html> 
