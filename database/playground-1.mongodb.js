@@ -1,4 +1,4 @@
-use bravo;
+use('mongodbVSCodePlaygroundDB');
 
 db.results.insertMany([
     { result_text: "happy" },
