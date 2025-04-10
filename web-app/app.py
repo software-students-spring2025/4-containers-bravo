@@ -1,9 +1,10 @@
 """Flask application for emotion detection web interface."""
 import os
+from datetime import datetime
 from flask import Flask, render_template, jsonify, request
 from flask_cors import CORS
 from pymongo import MongoClient
-from datetime import datetime
+
 
 app = Flask(__name__)
 CORS(app)
