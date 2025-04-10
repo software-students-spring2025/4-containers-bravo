@@ -95,6 +95,7 @@ def speech_to_text(audio_file):
         print(f"Error in speech recognition: {str(e)}")
         return None
 
+
 def send_emotion_request(emotion):
     """Send emotion to the server.
 
@@ -103,9 +104,7 @@ def send_emotion_request(emotion):
     """
     try:
         response = requests.post(
-            "http://0.0.0.0:5001/api/emotions",
-            json={"emotion": emotion},
-            timeout=5
+            "http://0.0.0.0:5001/api/emotions", json={"emotion": emotion}, timeout=5
         )
         if response.status_code == 200:
             print(f"Successfully sent emotion: {emotion}")
