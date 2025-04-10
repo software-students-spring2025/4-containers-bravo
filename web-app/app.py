@@ -1,8 +1,8 @@
 """Flask application for emotion detection web interface."""
+import os
 from flask import Flask, render_template, jsonify, request
 from flask_cors import CORS
 from pymongo import MongoClient
-import os
 from datetime import datetime
 
 app = Flask(__name__)
@@ -25,13 +25,11 @@ def save_emotion():
     data = request.json
     if not data or 'emotion' not in data:
         return jsonify({'error': 'Invalid data'}), 400
-    
     emotion_record = {
         'emotion': data['emotion'],
         'timestamp': datetime.utcnow(),
         'confidence': data.get('confidence', None)
     }
-    
     emotions_collection.insert_one(emotion_record)
     return jsonify({'status': 'success'}), 201
 
@@ -47,4 +45,4 @@ def get_recent_emotions():
     return jsonify(recent_emotions)
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=5001, debug=True) 
+    app.run(host='0.0.0.0', port=5001, debug=True)
