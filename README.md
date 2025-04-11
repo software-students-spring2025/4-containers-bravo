@@ -113,7 +113,7 @@ This is already set via the docker-compose.yml file for both services.
 
 ## Contributors
     - [@TimYan] (https://github.com/T1mmmmm)
-    -
+    - [@lawaldemur](https://github.com/lawaldemur) Vladimir Kartamyshev
     -
     -
 
