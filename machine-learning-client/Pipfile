@@ -7,11 +7,10 @@ name = "pypi"
 pymongo = "*"
 scipy = "*"
 sqlalchemy = "*"
-sounddevice = "*"
-numpy = "*"
 transformers = "*"
 speechrecognition = "*"
-soundfile = "*"
+requests = "*"
+numpy = "*"
 
 [dev-packages]
 pylint = "*"
